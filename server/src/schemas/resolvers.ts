@@ -1,4 +1,4 @@
-import User from "../models/User"
+import User from "../models/User.js"
 import { signToken } from '../services/auth.js'
 
 
@@ -21,8 +21,8 @@ const resolvers = {
               const token = signToken(user.username, user.email, user._id);
               return { token, user }
         },
-        login:  async (_parent: any, {username, password}: any) => {
-            const user = await User.findOne({username})
+        login:  async (_parent: any, {email, password}: any) => {
+            const user = await User.findOne({email})
             if (!user) {
                 throw new Error('Authentication failed');
               }

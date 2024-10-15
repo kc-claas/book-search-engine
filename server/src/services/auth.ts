@@ -9,12 +9,11 @@ interface JwtPayload {
   email: string,
 }
 
-export const authenticateToken = (req: any) => {
-  const authHeader = req.headers.authorization;
-
+export const authenticateToken = ({req}: any) => {
+  const authHeader = req.headers?.authorization;
+  
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-
     if (!token) {return req}
 
     const secretKey = process.env.JWT_SECRET_KEY || '';
