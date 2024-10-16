@@ -29,9 +29,7 @@ const apolloServerStart = async () => {
   ))
   
  
-  if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../client/dist'));
-  }
   
     app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
   ;
