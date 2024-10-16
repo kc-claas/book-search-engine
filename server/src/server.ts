@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'node:path';
 import db from './config/connection.js';
 import { ApolloServer } from '@apollo/server';
 import { typeDefs, resolvers } from './schemas/index.js'
@@ -29,9 +28,9 @@ const apolloServerStart = async () => {
     }
   ))
   
-  // if we're in production, serve client/build as static assets
+ 
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.use(express.static('../client/dist'));
   }
   
     app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
